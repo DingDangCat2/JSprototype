@@ -1,0 +1,50 @@
+1.js的数据类型：undefined,null,number,boolean,string,array,function,object,
+2.8进制和16进制，计算时都会被转换为10进制。
+3.任何设计nan的操作都返回nan,非数值的除法都为nan,nan和任何类型都不相等。
+
+数值转换操作：（number）(parseInt) （parseFloat）
+number:
+1.number()转换字符串时包括空串，非数值-nan。
+2.所有八进制十六进制都会被转换为十进制，八进制前导0被忽略。
+parseInt:
+1.会忽略前导的空格和0，第一个字符为数字则转换，遇到非字符停止，小数点为非数字。
+2.非数字开头则为NAN。
+3.可以设置第二个参数指定进制。
+parseFloat:
+1.保留一个小数点，
+2.忽略前导0和空格
+3.保留一个小数点，
+4.只有一个参数。
+5.数字加非数字遇到非数值停止，全为非数字NAN。
+
+字符串转换操作：
+tostring();
+1.null和undefined.无法使用，
+2.可接受一个参数。
+string();
+string可以转换null和undefined
+
+object();
+1.constructor:
+每创建一个对象，都会有一个原型对象，原型对象的constructor指向该对象。当在该对象下找不到constructor时就会顺着原型链在对象的原型找，找到还是指向对象本身的指针（constructor）number,string也一样。
+var o = new Object // 或者 o = {}
+o.constructor == Object
+var a = new Array  // 或者 a = []
+a.constructor == Array
+var n = new Number(3)
+n.constructor == Number
+2.hasOwnProperty():检查给定属性是否在当前对象实例中,而不是对象原型。Object.prototype——原型，
+3.isPrototypeOf():检查给定的对象是否是当前对象的原型。
+
+
+function a(){}
+a.prototype=>a的原型对象    a.prototype是一个空的object对象，可为其添加方法和属性。   a.prototype.constructor=a; 在原型上添加的方法，a的实例对象都可以访问。
+每一个函数function都有一个prototype,即原型对象，称为“显式原型”。
+var a1=new a();
+每一个实例对象都有一个__proto__.称为“隐式原型”。
+a1.__proto__==a.prototype.
+
+instanceof:判断左边的对象是不是右边对象的实例。如果右边的显示原型对象在左边的原型链上，则返回true.
+Object是由Function创建的，所以Object是Function的实例化 对象。
+object是function和object的实例。object是function的实例。所以说“object是objectd的实例！见图”
+
